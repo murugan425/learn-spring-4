@@ -6,8 +6,10 @@
 
 
 	<bean id="person" name="person" class="com.tamil.learnspring.Person">
-		<constructor-arg name="userId" value="425"></constructor-arg>
-		<constructor-arg name="userName" value="Murugan Nagarajan"></constructor-arg>
+		<constructor-arg name="userId" value="425" type="int"></constructor-arg>
+		<constructor-arg name="userName" value="Murugan Nagarajan"
+			type="String">
+		</constructor-arg>
 	</bean>
 
 </beans>

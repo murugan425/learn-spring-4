@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+
+
+	<bean id="personBean1" name="personBeanCreatedByFactoryMtd" class="com.tamil.learnspring.Person"
+		scope="singleton" init-method="initializePerson" destroy-method="destoryPerson"
+		factory-method="getPersonInstance">
+		<constructor-arg name="userId" value="400" type="int"></constructor-arg>
+		<constructor-arg name="userName" value="Tamil Murugan"
+			type="String">
+		</constructor-arg>
+		<property name="panId" value="ABZUM89320"></property>
+		<property name="addressDetail" ref="addressBean"></property>
+	</bean>
+
+	<bean id="personBean2" name="personBean2" class="com.tamil.learnspring.Person"
+		scope="singleton" init-method="initializePerson" destroy-method="destoryPerson"
+		factory-bean="personFactory" factory-method="createPerson">
+		<constructor-arg name="userId" value="425" type="int"></constructor-arg>
+		<constructor-arg name="userName" value="Murugan Nagarajan"
+			type="String">
+		</constructor-arg>
+		<property name="panId" value="AUBPM4916G"></property>
+		<property name="addressDetail" ref="addressBeanPName"></property>
+	</bean>
+
+	<bean id="addressBean" class="com.tamil.learnspring.Address"
+		scope="singleton" init-method="onCreateAddressObject" destroy-method="onDestoryAddressObject">
+		<constructor-arg name="addressLine1" type="String"
+			value="29, Vallalar Street">
+		</constructor-arg>
+		<constructor-arg type="String" name="addressLine2"
+			value="Vandalur">
+		</constructor-arg>
+		<constructor-arg name="city" type="String" value="Chennai"></constructor-arg>
+		<constructor-arg value="600048" type="String" name="pinCode"></constructor-arg>
+	</bean>
+
+	<!-- Making use of P Namespace to set the attributes instead of property 
+		tag -->
+	<bean id="addressBeanPName" class="com.tamil.learnspring.Address"
+		scope="singleton" p:addressLine1="46, Appasamy Nagar" p:addressLine2="Marakkanam Road"
+		p:city="Tindivanam">
+	</bean>
+
+	<bean id="personFactory" name="personFactory"
+		class="com.tamil.learnspring.factory.PersonFactory">
+	</bean>
+
+
+</beans>

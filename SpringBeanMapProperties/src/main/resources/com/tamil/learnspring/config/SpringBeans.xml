@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:util="http://www.springframework.org/schema/util"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.2.xsd">
+
+	<bean id="person" name="person" class="com.tamil.learnspring.Person"
+		p:panId="AUBPM4916G">
+		<constructor-arg name="userId" value="425" type="int"></constructor-arg>
+		<constructor-arg name="userName" value="Murugan Nagarajan"
+			type="String">
+		</constructor-arg>
+		<property name="addressDetail" ref="addressBean"></property>
+		<property name="mobileNumbers">
+			<set>
+				<value type="java.math.BigDecimal">9677079797</value>
+				<value type="java.math.BigDecimal">9677039862</value>
+				<value type="java.math.BigDecimal">7401631601</value>
+			</set>
+		</property>
+		<property name="skillSets">
+			<list>
+				<ref bean="spring" />
+				<ref bean="java" />
+				<ref bean="hibernate" />
+				<ref bean="jquery" />
+				<ref bean="html" />
+				<ref bean="j2ee" />
+			</list>
+		</property>
+
+		<property name="familyMembers">
+			<!-- Using Props tag to set Map values -->
+			<!-- <props> <prop key="father">Nagarajan</prop> <prop key="mother">Malar</prop> 
+				<prop key="spouse">Senthamizh</prop> <prop key="brother">Mani</prop> </props> -->
+			<!-- Using Map tag to set Map values -->
+			<map value-type="java.util.HashMap" key-type="java.lang.String">
+				<entry key="father" value="Nagarajan" value-type="java.lang.String">
+				</entry>
+				<entry key="mother" value="MalarKodi" value-type="java.lang.String">
+				</entry>
+				<entry key="spouse" value="Senthamizh" value-type="java.lang.String">
+				</entry>
+				<entry key="brother" value="Mani" value-type="java.lang.String">
+				</entry>
+			</map>
+		</property>
+		<property name="skillSetMap">
+			<map key-type="java.lang.String" value-type="com.tamil.learnspring.SkillSet">
+				<entry key="java" value-ref="java"></entry>
+				<entry key="html" value-ref="html"></entry>
+				<entry key="hibernate" value-ref="hibernate"></entry>
+				<entry value-ref="css" key="css"></entry>
+			</map>
+		</property>
+	</bean>
+
+	<bean id="addressBean" class="com.tamil.learnspring.Address">
+		<constructor-arg name="addressLine1" type="String"
+			value="29, Vallalar Street">
+		</constructor-arg>
+		<constructor-arg type="String" name="addressLine2"
+			value="Vandalur">
+		</constructor-arg>
+		<constructor-arg name="city" type="String" value="Chennai"></constructor-arg>
+		<constructor-arg value="600048" type="String" name="pinCode"></constructor-arg>
+
+	</bean>
+	<bean id="spring" class="com.tamil.learnspring.SkillSet"
+		p:technologyName="Spring" p:technologyCategory="Framework"></bean>
+	<bean id="java" class="com.tamil.learnspring.SkillSet"
+		p:technologyName="JAVA" p:technologyCategory="Programming"></bean>
+	<bean id="hibernate" class="com.tamil.learnspring.SkillSet"
+		p:technologyName="Hibernate" p:technologyCategory="Framework"></bean>
+	<bean id="jquery" class="com.tamil.learnspring.SkillSet"
+		p:technologyName="jQuery" p:technologyCategory="Web"></bean>
+	<bean id="html" class="com.tamil.learnspring.SkillSet"
+		p:technologyName="HTML5" p:technologyCategory="Web"></bean>
+	<bean id="css" class="com.tamil.learnspring.SkillSet"
+		p:technologyName="CSS" p:technologyCategory="Web"></bean>
+	<bean id="j2ee" class="com.tamil.learnspring.SkillSet"
+		p:technologyName="j2ee" p:technologyCategory="Programming"></bean>
+	<bean id="angularjs" class="com.tamil.learnspring.SkillSet"
+		p:technologyName="angularjs" p:technologyCategory="Framework"></bean>
+</beans>
