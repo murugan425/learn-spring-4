@@ -4,7 +4,7 @@
   <artifactId>SpringConstructorArg</artifactId>
   <version>0.0.1-SNAPSHOT</version>
   <name>SpringConstructorArg</name>
-  <description>How to set parameter values of a bean as Constructor Arguments</description>
+  <description>How to set parameter values of a bean</description>
   <dependencies>
   	<dependency>
   		<groupId>org.springframework</groupId>
