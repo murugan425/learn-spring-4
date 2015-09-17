@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:util="http://www.springframework.org/schema/util"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.2.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.2.xsd">
+
+	<context:annotation-config></context:annotation-config>
+	<bean id="logger" name="logger"
+		class="com.tamil.learnspring.loggers.CustomLogger">
+	</bean>
+	<bean id="consoleLogger" name="consoleLogger"
+		class="com.tamil.learnspring.loggers.ConsoleLogger">
+	</bean> 
+	<bean id="dbLogger" name="dbLogger"
+		class="com.tamil.learnspring.loggers.DBLogger">
+	<qualifier value="primary"></qualifier>
+	</bean>
+	<bean id="dbOracleLogger" name="dbOracleLogger"
+		class="com.tamil.learnspring.loggers.OracleDBLogger">
+	<qualifier value="oracle"></qualifier>
+	</bean>
+	<bean id="dbMySQLLogger" name="dbMySQLLogger"
+		class="com.tamil.learnspring.loggers.MySQLDBLogger">
+	<qualifier value="mysql"></qualifier>
+	</bean>
+	<bean id="fileLogger" name="fileLogger"
+		class="com.tamil.learnspring.loggers.FileLogger">
+	</bean>
+	<bean id="pdfFileLogger" name="pdfFileLogger"
+		class="com.tamil.learnspring.loggers.PDFFileLogger">
+	</bean>
+</beans>

@@ -9,7 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 
 import com.tamil.learnspring.loggerinf.DBLoggerInf;
-import com.tamil.learnspring.loggerinf.FileLoggerInf;
+//import com.tamil.learnspring.loggerinf.FileLoggerInf;
 import com.tamil.learnspring.loggerinf.LoggerInf;
 
 /**
@@ -21,7 +21,6 @@ public class CustomLogger {
 	@Autowired(required = false)
 	private ConsoleLogger consoleLogger;
 	
-	@Autowired(required = false)
 	@Qualifier("primary")
 	private DBLogger dbLogger;
 	
