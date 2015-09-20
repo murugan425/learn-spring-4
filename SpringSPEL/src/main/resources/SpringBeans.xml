@@ -7,7 +7,7 @@
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.2.xsd">
 
 
-	<context:component-scan base-package="com.tamil.learnspring.spel"></context:component-scan>
+	<context:component-scan base-package="src.main.java"></context:component-scan>
 	<bean id="person" name="person"
 		class="com.tamil.learnspring.spel.Person">
 		<property name="userId" value="#{random.nextInt(9)*random.nextInt(10000)}"></property>
