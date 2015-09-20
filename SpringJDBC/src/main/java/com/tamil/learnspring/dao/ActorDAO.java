@@ -13,6 +13,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
+import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
+import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.stereotype.Component;
 
 import com.tamil.learnspring.model.Actor;
@@ -27,11 +29,15 @@ public class ActorDAO {
 	@Autowired
 	private JdbcTemplate jdbcTemplate;
 	
+	@Autowired
+	private NamedParameterJdbcTemplate jdbcNamedTemplate;
+	
 	@Value("${GET_ACTORS_LIST}")
 	private String getActorsList;
+	@Value("${GET_ACTOR_BYNAME}") 
+	private String getActorByName;
 	
 	public List<Actor> getActorsList() {
-		System.out.println(getActorsList);
 		return jdbcTemplate.query(getActorsList, new RowMapper<Actor>() {
 
 			public Actor mapRow(ResultSet rs, int rowNum) throws SQLException {
@@ -43,6 +49,25 @@ public class ActorDAO {
 				return actor;
 			}
 			
+		});
+	}
+
+	/**
+	 * @param userName
+	 * @return List<Actor>
+	 */
+	public List<Actor> getActorsByName(String userName) {
+		MapSqlParameterSource params = new MapSqlParameterSource("NAME",userName);
+		return jdbcNamedTemplate.query(getActorByName, params, new RowMapper<Actor>() {
+
+			public Actor mapRow(ResultSet rs, int rowNum) throws SQLException {
+				Actor actor = new Actor();				
+				actor.setActorId(rs.getInt("actor_id"));
+				actor.setFirstName(rs.getString("first_name"));
+				actor.setLastName(rs.getString("last_name"));
+				actor.setLastUpdatedTime(rs.getTimestamp("last_update"));
+				return actor;
+			}		
 		});
 	}
 }
