@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" id="WebApp_ID" version="2.5">
+  <display-name>SpringWebApp</display-name>
+  <welcome-file-list>
+    <welcome-file>index.html</welcome-file>
+    <welcome-file>index.htm</welcome-file>
+    <welcome-file>index.jsp</welcome-file>
+    <welcome-file>default.html</welcome-file>
+    <welcome-file>default.htm</welcome-file>
+    <welcome-file>default.jsp</welcome-file>
+  </welcome-file-list>
+  
+  <!-- MVC Dispatcher servlet config -->
+  <servlet>
+    <description></description>
+    <display-name>Spring Dispatcher Servlet</display-name>
+    <servlet-name>learn-spring-config</servlet-name>
+    <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+    <load-on-startup>1</load-on-startup>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>learn-spring-config</servlet-name>
+    <url-pattern>/</url-pattern>
+  </servlet-mapping>
+  
+  <!-- Datasource config -->
+  <!-- Resource configured in context.xml of the server and referred here-->
+  <description>MySQL - Learn Spring App</description>
+  <resource-ref>
+      <description>Local DB Connection</description>      
+      <res-ref-name>jdbc/learnSpringDB</res-ref-name>
+      <res-type>javax.sql.DataSource</res-type>
+      <res-auth>Container</res-auth>
+  </resource-ref>  
+  
+  <!-- Listener class added to load the context & bean configuration files -->
+  <listener>
+  	<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+  </listener>
+  
+  <!-- Declare the context files list which needs to be loaded -->
+  <context-param>
+  	<param-name>contextConfigLocation</param-name>
+  	<param-value>
+  		classpath:com/tamil/learnspring/webmvc/config/app-context.xml,
+  		classpath:com/tamil/learnspring/webmvc/config/dao-context.xml,
+  		classpath:com/tamil/learnspring/webmvc/config/service-context.xml 		
+  	</param-value>
+  </context-param>
+  
+</web-app>
