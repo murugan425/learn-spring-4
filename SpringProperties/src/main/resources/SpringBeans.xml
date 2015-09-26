@@ -9,10 +9,10 @@
 
 	<context:component-scan base-package="src.main.java"></context:component-scan>
 	<context:annotation-config></context:annotation-config>
-	<context:property-placeholder				
-		location="userDetails.properties" />
-		<!-- location="classpath:com/tamil/learnspring/resources/users.properties" /> -->
-		<!-- location="com/tamil/learnspring/resources/users.properties" /> -->
+	<context:property-placeholder
+		location="classpath:com/tamil/learnspring/resources/users.properties" />
+		<!-- location="com/tamil/learnspring/resources/users.properties" /> -->								
+		<!-- location="userDetails.properties" /> -->		
 	<bean id="person" name="person"
 		class="com.tamil.learnspring.Person">
 	<property name="userName" value="${user.username}"></property>

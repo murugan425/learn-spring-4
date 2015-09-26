@@ -45,4 +45,51 @@
   		<version>20040616</version>
   	</dependency>
   </dependencies>
+  <properties>
+  	<source.jdkversion>1.7</source.jdkversion>
+  	<maven.version>3.0.4</maven.version>
+  	<os.required>windows</os.required>
+  </properties>
+  <build>
+  	<plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-compiler-plugin</artifactId>
+          <version>3.0</version>
+          <configuration>
+            <source>${source.jdkversion}</source>
+            <target>${source.jdkversion}</target>
+          </configuration>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-enforcer-plugin</artifactId>
+        <version>1.4.1</version>
+        <executions>
+          <execution>
+            <id>enforce-versions</id>
+            <goals>
+              <goal>enforce</goal>
+            </goals>            
+            <configuration>
+              <rules>
+                <requireMavenVersion>
+                  <message>Please consider using proper Maven version! Required ${maven.version}</message>
+                  <version>${maven.version}</version>
+                </requireMavenVersion>
+                <requireJavaVersion>
+                  <message>Please consider using proper JAVA version! Required ${source.jdkversion}</message>
+                  <version>${source.jdkversion}</version>
+                </requireJavaVersion>
+                <requireOS>
+                  <message>Please consider using proper OS! Required ${os.required}</message>
+                  <family>windows</family>
+                </requireOS>
+              </rules>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+  	</plugins>
+  </build>
 </project>

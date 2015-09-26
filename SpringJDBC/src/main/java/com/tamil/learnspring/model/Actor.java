@@ -16,6 +16,51 @@ public class Actor {
 	private String firstName;
 	private String lastName;
 	private Timestamp lastUpdatedTime;
+	
+	
+	/**
+	 * 
+	 */
+	public Actor() {
+	}
+
+
+	/**
+	 * @param firstName
+	 * @param lastName
+	 */
+	public Actor(String firstName, String lastName) {
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.lastUpdatedTime = new Timestamp(System.currentTimeMillis());
+	}
+
+
+	/**
+	 * @param firstName
+	 * @param lastName
+	 * @param lastUpdatedTime
+	 */
+	public Actor(String firstName, String lastName, Timestamp lastUpdatedTime) {
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.lastUpdatedTime = lastUpdatedTime;
+	}
+	
+	
+	/**
+	 * @param actorId
+	 * @param firstName
+	 * @param lastName
+	 * @param lastUpdatedTime
+	 */
+	public Actor(Integer actorId, String firstName, String lastName,
+			Timestamp lastUpdatedTime) {
+		this(firstName,lastName,lastUpdatedTime);
+		this.actorId = actorId;		
+	}
+
+
 	/**
 	 * @return the actorId
 	 */
